@@ -5,21 +5,30 @@ class ClasseEstado:
         self.proxEstado = proxEstado
     
     def imprimir(self):
-        print(f'Estado: {self.nome}, Ingrediente: {self.ingrediente}, Próximo Estado: {self.proxEstado}')
-    
+        print(self.nome, self.ingrediente, self.proxEstado)
+
+    def validacao(self, ing):
+        if self.proxEstado == 'erro':
+            print('Deu erro')
+            return
+        else:
+            if self.ingrendiente == ing:
+                return True
+            else:
+                self.proxEstado = 'erro'
 
 def leituraArquivo():
     with open('arquivo/AFD.txt', 'r') as file:
         linhas = file.readlines()
 
-    estados = linhas[0].strip().split(' ')[1:]
+    e = linhas[0].strip().split(' ')[1:]
     transicoes = {}
 
-    for estado in estados:
+    for estado in e:
         transicoes[estado] = {}
 
     # Dicionário para armazenar as instâncias de ClasseEstado
-    estados_instancias = []
+    estados = []
 
     for linha in linhas[3:]:
         if linha.strip() == '---':
@@ -35,11 +44,13 @@ def leituraArquivo():
 
         # Criar instância de ClasseEstado e adicionar à lista
         instancia_estado = ClasseEstado(estado, prox_estado, valor_entrada)
-        estados_instancias.append(instancia_estado)
+        estados.append(instancia_estado)
 
-    # Imprimir todas as instâncias criadas
-    for instancia in estados_instancias:
+    # # Imprimir todas as instâncias criadas
+    for instancia in estados:
+        print('Transicao: ')
         instancia.imprimir()
+        print('\n')
 
 # Chamar a função para leitura e processamento do arquivo
 leituraArquivo()
