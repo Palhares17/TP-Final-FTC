@@ -1,56 +1,74 @@
-class ClasseEstado:
-    def __init__(self, estados, proxEstado, ingrediente):
-        self.nome = estados
-        self.ingrediente = ingrediente
-        self.proxEstado = proxEstado
-    
-    def imprimir(self):
-        print(self.nome, self.ingrediente, self.proxEstado)
+from collections import defaultdict
 
-    def validacao(self, ing):
-        if self.proxEstado == 'erro':
-            print('Deu erro')
-            return
+class AutomatoFinitoDeterministico:
+    def __init__(self, estados, estado_inicial, transicoes):
+        self.estados = estados
+        self.estado_inicial = estado_inicial
+        self.transicoes = transicoes
+        self.estado_atual = estado_inicial
+        self.estados_finais = None
+
+    def initialize(self, estados, alfabeto, transicoes, estado_inicial, estados_finais):
+        self.estados = estados
+        self.alfabeto = alfabeto
+        self.transicoes = transicoes
+        self.estado_inicial = estado_inicial
+        self.estados_finais = estados_finais
+        self.estado_atual = estado_inicial
+
+    def transitar(self, simbolo):
+        if simbolo in self.transicoes[self.estado_atual]:
+            self.estado_atual = self.transicoes[self.estado_atual][simbolo]
         else:
-            if self.ingrendiente == ing:
-                return True
-            else:
-                self.proxEstado = 'erro'
-
-def leituraArquivo():
-    with open('arquivo/AFD.txt', 'r') as file:
-        linhas = file.readlines()
-
-    e = linhas[0].strip().split(' ')[1:]
-    transicoes = {}
-
-    for estado in e:
-        transicoes[estado] = {}
-
-    # Dicionário para armazenar as instâncias de ClasseEstado
-    estados = []
-
-    for linha in linhas[3:]:
-        if linha.strip() == '---':
-            break
+            self.estado_atual = 'erro'
         
-        parts = linha.strip().split('->')
-        estado = parts[0].strip()
-        transition = parts[1].strip().split('|')
-        prox_estado = transition[0].strip()
-        valor_entrada = transition[1].strip()
+        return self.estado_atual
 
-        transicoes[estado][valor_entrada] = prox_estado
+    def getEstadoAtual(self):
+        if self.estado_atual == 'F':
+            print('receita criada')
+        return self.estado_atual
 
-        # Criar instância de ClasseEstado e adicionar à lista
-        instancia_estado = ClasseEstado(estado, prox_estado, valor_entrada)
-        estados.append(instancia_estado)
+    def read_afd(file_path):
+        with open('arquivo/AFD.txt', 'r') as file:
+            linhas = file.readlines()
 
-    # # Imprimir todas as instâncias criadas
-    for instancia in estados:
-        print('Transicao: ')
-        instancia.imprimir()
-        print('\n')
+        estados = linhas[0].strip().split(' ')[1:]
+        transicoes = {}
 
-# Chamar a função para leitura e processamento do arquivo
-leituraArquivo()
+        for estado in estados:
+            transicoes[estado] = {}
+
+        for linha in linhas[3:]:
+            if linha.strip() == '---':
+                break
+            
+            parte = linha.strip().split('->')
+            estado = parte[0].strip()
+            transition = parte[1].strip().split('|')
+            prox_estado = transition[0].strip()
+            valor_entrada = transition[1].strip()
+
+            transicoes[estado][valor_entrada] = prox_estado
+
+        return AutomatoFinitoDeterministico(estados, 'I', transicoes)
+
+
+maquina = AutomatoFinitoDeterministico.read_afd('arquivo/AFD.txt')
+
+resposta = 's'
+while (resposta != 'n'):
+    resposta = input('Deseja adicionar um ingrediente? (s/n): ')
+    if resposta == 'n':
+        break
+    simbolo = input('Adicione o ingrediente: ')
+    maquina.transitar(simbolo)
+
+    if maquina.getEstadoAtual():
+        print('Estado: ', maquina.getEstadoAtual())
+        
+    if maquina.getEstadoAtual() == 'erro':
+        print('Erro')
+        break
+
+        
