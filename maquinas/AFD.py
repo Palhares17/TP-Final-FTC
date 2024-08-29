@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-class AutomatoFinitoDeterministico:
+class AFD:
     def __init__(self, estados, estado_inicial, transicoes):
         self.estados = estados
         self.estado_inicial = estado_inicial
@@ -30,7 +30,7 @@ class AutomatoFinitoDeterministico:
         return self.estado_atual
 
     def read_afd(file_path):
-        with open('arquivo/AFD.txt', 'r') as file:
+        with open(file_path, 'r') as file:
             linhas = file.readlines()
 
         estados = linhas[0].strip().split(' ')[1:]
@@ -51,10 +51,10 @@ class AutomatoFinitoDeterministico:
 
             transicoes[estado][valor_entrada] = prox_estado
 
-        return AutomatoFinitoDeterministico(estados, 'I', transicoes)
+        return AFD(estados, 'I', transicoes)
 
 
-maquina = AutomatoFinitoDeterministico.read_afd('arquivo/AFD.txt')
+maquina = AFD.read_afd('arquivo/AFD.txt')
 
 resposta = 's'
 while (resposta != 'n'):

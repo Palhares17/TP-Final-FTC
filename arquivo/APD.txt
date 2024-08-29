@@ -1,0 +1,7 @@
+Q: E1 E2
+S: a b
+I: I
+F: F
+I -> I | a | & | X
+I -> F | b | X | &
+F -> F | b | X | &
