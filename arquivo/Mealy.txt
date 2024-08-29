@@ -1,0 +1,7 @@
+Estados: I M P F
+I: I
+F: F
+I -> M | a | "Adicionando farinha e começando a misturar"
+M -> P | leite | "Adicionando leite à mistura"
+P -> F | forno | "Levando a massa ao forno"
+---
