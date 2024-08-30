@@ -1,0 +1,11 @@
+Estados: I M P F
+I -> M | f
+M -> P | l
+P -> M | r
+P -> F | o
+---
+I: "Início da receita"
+M: "Misturando os ingredientes"
+P: "Preparando para assar"
+F: "Receita finalizada"
+---

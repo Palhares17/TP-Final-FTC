@@ -1,4 +1,4 @@
-class MaquinaMealy:
+class MaquinaMoore:
     def __init__(self, estados, estado_inicial, transicoes, saidas):
         self.estados = estados
         self.estado_inicial = estado_inicial
@@ -8,10 +8,10 @@ class MaquinaMealy:
 
     def transitar(self, simbolo):
         if simbolo in self.transicoes[self.estado_atual]:
-            prox_estado, saida = self.transicoes[self.estado_atual][simbolo]
+            prox_estado = self.transicoes[self.estado_atual][simbolo]
             self.estado_atual = prox_estado
-            print('Transição bem-sucedida:', (prox_estado, saida))
-            return saida
+            print(f"Transição para o estado {prox_estado} com a saída '{self.saidas[prox_estado]}'")
+            return self.saidas[prox_estado]
         else:
             self.estado_atual = 'erro'
             return 'Ingrediente inválido! A receita foi arruinada.'
@@ -26,6 +26,7 @@ class MaquinaMealy:
 
         estados = linhas[0].strip().split(' ')[1:]
         transicoes = {}
+        saidas = {}
 
         for estado in estados:
             transicoes[estado] = {}
@@ -42,24 +43,28 @@ class MaquinaMealy:
 
             estado = parte[0].strip()
             transition = parte[1].strip().split('|')
-            if len(transition) < 3:
+            if len(transition) < 2:
                 continue
 
             prox_estado = transition[0].strip()
             valor_entrada = transition[1].strip()
-            saida = transition[2].strip()
 
-            if estado in transicoes:
-                transicoes[estado][valor_entrada] = (prox_estado, saida)
-            else:
-                print(f"Erro: Estado '{estado}' não encontrado entre os estados lidos.")
+            transicoes[estado][valor_entrada] = prox_estado
+            print(f"Adicionando transição: {estado} -> {prox_estado} com símbolo '{valor_entrada}'")
 
-        return MaquinaMealy(estados, 'I', transicoes, {})
+        for linha in linhas[len(estados)+3:]:
+            if linha.strip() == '---':
+                break
 
+            estado, saida = linha.strip().split(':')
+            estado = estado.strip()
+            saida = saida.strip()
+            saidas[estado] = saida
 
+        return MaquinaMoore(estados, 'I', transicoes, saidas)
 
 # Exemplo de uso:
-maquina = MaquinaMealy.leituraArq('arquivo/Mealy.txt')
+maquina = MaquinaMoore.leituraArq('arquivo/Moore.txt')
 
 resposta = 's'
 while resposta != 'n':
@@ -70,7 +75,6 @@ while resposta != 'n':
     saida = maquina.transitar(simbolo)
 
     if maquina.getEstadoAtual() != 'erro':
-        #print('Ação:', saida)
         print('Estado Atual:', maquina.getEstadoAtual())
     else:
         print('Erro:', saida)
