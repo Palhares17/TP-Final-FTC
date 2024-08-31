@@ -17,7 +17,6 @@ class MaquinaTuring:
             
             # Verifica se há transição para o símbolo atual
             if simbolo_atual not in self.transicoes[self.estado_atual]:
-                print(f"Nenhuma transição definida para o símbolo '{simbolo_atual}' no estado '{self.estado_atual}'.")
                 break
 
             transicao = self.transicoes[self.estado_atual][simbolo_atual]
@@ -84,11 +83,3 @@ class MaquinaTuring:
 # Exemplo de uso
 maquina = MaquinaTuring.leituraArq('arquivo/Turing.txt')
 
-# maquina.adicionar_simbolo('0')
-# maquina.adicionar_simbolo('0')
-# maquina.adicionar_simbolo('1')
-# maquina.adicionar_simbolo('0')
-# maquina.adicionar_simbolo('0')
-
-# maquina.transitar()
-# print(maquina.getFita())

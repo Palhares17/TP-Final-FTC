@@ -82,12 +82,13 @@ def menu():
     elif opcao == "5":
         maquina = MaquinaTuring.leituraArq('arquivo/Turing.txt')
 
+        print("Soma mais um ao número binário")
         resposta = 's'
         while resposta != 'n':
-            resposta = input('Deseja adicionar um ingrediente? (s/n): ')
+            resposta = input('Deseja adicionar mais um bit? (s/n): ')
             if resposta == 'n':
                 break
-            simbolo = input('Adicione o ingrediente: ')
+            simbolo = input('Adione o bit: ')
             maquina.adicionar_simbolo(simbolo)
         
         maquina.transitar()
