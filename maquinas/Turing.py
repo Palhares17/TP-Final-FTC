@@ -6,9 +6,8 @@ class MaquinaTuring:
         self.transicoes = transicoes
         self.fita = []
 
-    def setFita(self, simbolo):
-        self.fita = list(simbolo)
-        print(f'{self.fita}')
+    def adicionar_simbolo(self, simbolo):
+        self.fita.append(simbolo)
 
     def transitar(self):
         posicao_cabecote = 0
@@ -28,6 +27,8 @@ class MaquinaTuring:
 
             novo_simbolo, movimentacao_cabecote, prox_estado = transicao
 
+            print(f'{self.estado_atual} {self.fita} {novo_simbolo} {movimentacao_cabecote} {prox_estado}')
+
             self.fita[posicao_cabecote] = novo_simbolo
             self.estado_atual = prox_estado
 
@@ -46,7 +47,7 @@ class MaquinaTuring:
         return self.estado_atual
     
     def getFita(self):
-        return self.fita
+        return ''.join(self.fita)
 
     @staticmethod
     def leituraArq(file_path):
@@ -58,8 +59,6 @@ class MaquinaTuring:
 
         for estado in estados:
             transicoes[estado] = {}
-
-        print("Estados lidos:", estados)
 
         # Ler as transições
         for linha in linhas[1:]:
@@ -85,12 +84,11 @@ class MaquinaTuring:
 # Exemplo de uso
 maquina = MaquinaTuring.leituraArq('arquivo/Turing.txt')
 
-maquina.setFita('0')
-maquina.setFita('1')
-maquina.setFita('_')
-maquina.setFita('1')
-maquina.setFita('0')
-maquina.setFita('_')
+maquina.adicionar_simbolo('0')
+maquina.adicionar_simbolo('0')
+maquina.adicionar_simbolo('1')
+maquina.adicionar_simbolo('0')
+maquina.adicionar_simbolo('0')
 
 maquina.transitar()
-print(f'{maquina.getFita()}')
+print(maquina.getFita())
