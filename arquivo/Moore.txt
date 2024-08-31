@@ -1,11 +1,13 @@
-Estados: I M P F
-I -> M | f
-M -> P | l
-P -> M | r
-P -> F | o
+Estados: I q1 q2 q3 q4
+I : I
+I -> q1 | da
+q1 -> q2 | ve
+q2 -> q2 | ve
+q2 -> q3 | va
+q3 -> q4 | va
 ---
-I: Início da receita
-M: Misturando os ingredientes
-P: Preparando para assar
-F: Receita finalizada
+q1: "Destilado anao adicionado"
+q2: "Verbena adicionado"
+q3: "Veneno de Aracnas adicionado"
+q4: "Pocao coruja do mato realizada"
 ---

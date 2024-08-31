@@ -1,5 +1,8 @@
-Estados: I M P F
-I -> M | a | Adicionando farinha e começando a misturar
-M -> P | leite | Adicionando leite à mistura
-P -> F | forno | Levando a massa ao forno
+Estados: I q1 q2 q3 q4
+I : I
+I -> q1 | da | "+10% de dano"
+q1 -> q2 | ce | "+15segs de efeito adicionado"
+q2 -> q2 | ce | "+15segs de efeito adicionado"
+q2 -> q3 | sc | "+4% de dano aumentado"
+q3 -> q4 | sc | "Pocao sangue preto finalizada"
 ---

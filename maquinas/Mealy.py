@@ -27,10 +27,13 @@ class MaquinaMealy:
         estados = linhas[0].strip().split(' ')[1:]
         transicoes = {}
 
+        # Inicializando o dicionário de transições para cada estado
         for estado in estados:
             transicoes[estado] = {}
 
-        for linha in linhas[1:]:
+        print("Estados lidos:", estados)
+
+        for linha in linhas[2:]:
             if linha.strip() == '---':
                 break
 
@@ -47,8 +50,10 @@ class MaquinaMealy:
             valor_entrada = transition[1].strip()
             saida = transition[2].strip()
 
+            # Verificando se o estado existe nos estados lidos
             if estado in transicoes:
                 transicoes[estado][valor_entrada] = (prox_estado, saida)
+                #print(f"Adicionando transição: {estado} -> {prox_estado} com símbolo '{valor_entrada}' e saída '{saida}'")
             else:
                 print(f"Erro: Estado '{estado}' não encontrado entre os estados lidos.")
 
