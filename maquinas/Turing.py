@@ -32,9 +32,9 @@ class MaquinaTuring:
             self.fita[posicao_cabecote] = novo_simbolo
             self.estado_atual = prox_estado
 
-            if movimentacao_cabecote == 'L':
+            if movimentacao_cabecote == 'E':
                 posicao_cabecote -= 1
-            elif movimentacao_cabecote == 'R':
+            elif movimentacao_cabecote == 'D':
                 posicao_cabecote += 1
 
             if posicao_cabecote < 0:
