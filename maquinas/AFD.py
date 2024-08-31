@@ -29,7 +29,7 @@ class AFD:
             print('receita criada')
         return self.estado_atual
 
-    def read_afd(file_path):
+    def leituraArq(file_path):
         with open(file_path, 'r') as file:
             linhas = file.readlines()
 
@@ -54,21 +54,4 @@ class AFD:
         return AFD(estados, 'I', transicoes)
 
 
-maquina = AFD.read_afd('arquivo/AFD.txt')
-
-resposta = 's'
-while (resposta != 'n'):
-    resposta = input('Deseja adicionar um ingrediente? (s/n): ')
-    if resposta == 'n':
-        break
-    simbolo = input('Adicione o ingrediente: ')
-    maquina.transitar(simbolo)
-
-    if maquina.getEstadoAtual():
-        print('Estado: ', maquina.getEstadoAtual())
-        
-    if maquina.getEstadoAtual() == 'erro':
-        print('Erro')
-        break
-
-        
+maquina = AFD.leituraArq('arquivo/AFD.txt')

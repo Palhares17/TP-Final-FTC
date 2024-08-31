@@ -84,11 +84,11 @@ class MaquinaTuring:
 # Exemplo de uso
 maquina = MaquinaTuring.leituraArq('arquivo/Turing.txt')
 
-maquina.adicionar_simbolo('0')
-maquina.adicionar_simbolo('0')
-maquina.adicionar_simbolo('1')
-maquina.adicionar_simbolo('0')
-maquina.adicionar_simbolo('0')
+# maquina.adicionar_simbolo('0')
+# maquina.adicionar_simbolo('0')
+# maquina.adicionar_simbolo('1')
+# maquina.adicionar_simbolo('0')
+# maquina.adicionar_simbolo('0')
 
-maquina.transitar()
-print(maquina.getFita())
+# maquina.transitar()
+# print(maquina.getFita())

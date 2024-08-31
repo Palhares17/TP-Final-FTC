@@ -31,8 +31,6 @@ class MaquinaMoore:
         for estado in estados:
             transicoes[estado] = {}
 
-        print("Estados lidos:", estados)
-
         for linha in linhas[1:]:
             if linha.strip() == '---':
                 break
@@ -50,7 +48,6 @@ class MaquinaMoore:
             valor_entrada = transition[1].strip()
 
             transicoes[estado][valor_entrada] = prox_estado
-            print(f"Adicionando transição: {estado} -> {prox_estado} com símbolo '{valor_entrada}'")
 
         for linha in linhas[len(estados)+3:]:
             if linha.strip() == '---':
@@ -66,16 +63,4 @@ class MaquinaMoore:
 # Exemplo de uso:
 maquina = MaquinaMoore.leituraArq('arquivo/Moore.txt')
 
-resposta = 's'
-while resposta != 'n':
-    resposta = input('Deseja adicionar um ingrediente? (s/n): ')
-    if resposta == 'n':
-        break
-    simbolo = input('Adicione o ingrediente: ')
-    saida = maquina.transitar(simbolo)
 
-    if maquina.getEstadoAtual() != 'erro':
-        print('Estado Atual:', maquina.getEstadoAtual())
-    else:
-        print('Erro:', saida)
-        break

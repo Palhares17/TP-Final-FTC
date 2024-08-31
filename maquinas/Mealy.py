@@ -30,8 +30,6 @@ class MaquinaMealy:
         for estado in estados:
             transicoes[estado] = {}
 
-        print("Estados lidos:", estados)
-
         for linha in linhas[1:]:
             if linha.strip() == '---':
                 break
@@ -61,17 +59,3 @@ class MaquinaMealy:
 # Exemplo de uso:
 maquina = MaquinaMealy.leituraArq('arquivo/Mealy.txt')
 
-resposta = 's'
-while resposta != 'n':
-    resposta = input('Deseja adicionar um ingrediente? (s/n): ')
-    if resposta == 'n':
-        break
-    simbolo = input('Adicione o ingrediente: ')
-    saida = maquina.transitar(simbolo)
-
-    if maquina.getEstadoAtual() != 'erro':
-        #print('Ação:', saida)
-        print('Estado Atual:', maquina.getEstadoAtual())
-    else:
-        print('Erro:', saida)
-        break

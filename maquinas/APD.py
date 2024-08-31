@@ -70,18 +70,4 @@ class APD:
 # Exemplo de uso do APD
 maquina = APD.leituraArq('arquivo/APD.txt')
 
-resposta = 's'
-while resposta != 'n':
-    resposta = input('Deseja adicionar um ingrediente? (s/n): ')
-    if resposta == 'n':
-        break
-    simbolo = input('Adicione o ingrediente: ')
 
-    estado_atual = maquina.transitar(simbolo)
-    print(f'Estado atual: {estado_atual}')
-
-    if estado_atual == 'erro':
-        print('Erro na transição!')
-        break
-    else:
-        print(f'Estado atual: {estado_atual}, Pilha: {maquina.pilha}')
