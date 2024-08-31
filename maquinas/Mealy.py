@@ -57,8 +57,6 @@ class MaquinaMealy:
 
         return MaquinaMealy(estados, 'I', transicoes, {})
 
-
-
 # Exemplo de uso:
 maquina = MaquinaMealy.leituraArq('arquivo/Mealy.txt')
 
