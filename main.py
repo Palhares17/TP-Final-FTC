@@ -75,7 +75,7 @@ def menu():
                 print('Erro na transição!')
                 break
             elif estado_atual == 'F':
-                print('Receita de PAPAFIGO criada!' + '\n' * 4)
+                print('\033[1m' + '\nReceita de PAPAFIGO criada!\033[0m' + '\n' * 4)
                 break
         
 
@@ -109,7 +109,7 @@ def menu():
                 print('Erro na transição!')
                 break
             elif estado_atual == 'F':
-                print('Receita de lUA CHEIA criada!' + '\n' * 4)
+                print('\033[1m' + '\nReceita de lUA CHEIA criada!\033[0m' + '\n' * 4)
                 break
         
         
@@ -138,7 +138,7 @@ def menu():
                 break
             simbolo = input('Adicione o ingrediente: ')
             saida = maquina.transitar(simbolo)
-            print(f'Estado Atual: {maquina.getEstadoAtual()} | saída: {saida}' + '\n' * 2)
+            print(f'\033[1mEstado Atual: {maquina.getEstadoAtual()} | saída: {saida}\033[0m' + '\n' * 2)
         
 
         
@@ -159,7 +159,7 @@ def menu():
                 break
             simbolo = input('Adicione o ingrediente: ')
             saida = maquina.transitar(simbolo)
-            print(f'Estado Atual: {maquina.getEstadoAtual()} | saída: {saida}' + '\n' * 2)
+            print(f'\033[1mEstado Atual: {maquina.getEstadoAtual()} | saída: {saida}\033[0m' + '\n' * 2)
         
 
 
@@ -185,7 +185,7 @@ def menu():
     elif opcao == "0":
         print("Programa encerrado." + '\n' * 4)
     else:
-        print("Opção inválida. Por favor, escolha uma opção válida." + '\n' * 4)    
+        print("\033[1m" + "Opção inválida. Por favor, escolha uma opção válida.\033[0m" + '\n' * 4)    
     
     menu()  # Chama o menu novamente se a opção for inválida
 
