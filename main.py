@@ -24,13 +24,14 @@ def menu():
             if resposta == 'n':
                 break
             simbolo = input('Adicione o ingrediente: ')
-            maquina.transitar(simbolo)
 
-            if maquina.getEstadoAtual():
-                print('Estado: ', maquina.getEstadoAtual())
-                
-            if maquina.getEstadoAtual() == 'erro':
-                print('Erro')
+            estado_atual = maquina.transitar(simbolo)
+
+            if estado_atual == 'erro':
+                print('Erro na transição!')
+                break
+            elif estado_atual == 'F':
+                print('Receita criada!')
                 break
 
 
@@ -45,14 +46,14 @@ def menu():
             simbolo = input('Adicione o ingrediente: ')
 
             estado_atual = maquina.transitar(simbolo)
-            print(f'Estado atual: {estado_atual}')
 
             if estado_atual == 'erro':
                 print('Erro na transição!')
                 break
-            else:
-                print(f'Estado atual: {estado_atual}, Pilha: {maquina.pilha}')
-
+            elif estado_atual == 'F':
+                print('Receita criada!')
+                break
+    
     elif opcao == "3":
         maquina = MaquinaMoore.leituraArq('arquivo/Moore.txt')
 
@@ -82,12 +83,13 @@ def menu():
     elif opcao == "5":
         maquina = MaquinaTuring.leituraArq('arquivo/Turing.txt')
 
+        print("Soma mais um ao número binário")
         resposta = 's'
         while resposta != 'n':
-            resposta = input('Deseja adicionar um ingrediente? (s/n): ')
+            resposta = input('Deseja adicionar mais um bit? (s/n): ')
             if resposta == 'n':
                 break
-            simbolo = input('Adicione o ingrediente: ')
+            simbolo = input('Adione o bit: ')
             maquina.adicionar_simbolo(simbolo)
         
         maquina.transitar()

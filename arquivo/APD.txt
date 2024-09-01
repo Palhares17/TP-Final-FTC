@@ -1,7 +1,9 @@
-Q: E1 E2
+Q: I q1 q2 q3 F
 S: a b
 I: I
 F: F
-I -> I | a | & | X
-I -> F | b | X | &
-F -> F | b | X | &
+I  -> q1 | ac | & | v
+q1 -> q1 | co | v | v
+q1 -> q2 | da | v | g
+q2 -> q3 | dl | g | z
+q3 -> F  | el | z | &

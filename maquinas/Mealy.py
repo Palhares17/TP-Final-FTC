@@ -31,7 +31,6 @@ class MaquinaMealy:
         for estado in estados:
             transicoes[estado] = {}
 
-        print("Estados lidos:", estados)
 
         for linha in linhas[2:]:
             if linha.strip() == '---':
@@ -53,13 +52,10 @@ class MaquinaMealy:
             # Verificando se o estado existe nos estados lidos
             if estado in transicoes:
                 transicoes[estado][valor_entrada] = (prox_estado, saida)
-                #print(f"Adicionando transição: {estado} -> {prox_estado} com símbolo '{valor_entrada}' e saída '{saida}'")
             else:
                 print(f"Erro: Estado '{estado}' não encontrado entre os estados lidos.")
 
         return MaquinaMealy(estados, 'I', transicoes, {})
-
-
 
 # Exemplo de uso:
 maquina = MaquinaMealy.leituraArq('arquivo/Mealy.txt')

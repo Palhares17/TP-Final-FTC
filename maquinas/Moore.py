@@ -32,8 +32,6 @@ class MaquinaMoore:
         for estado in estados:
             transicoes[estado] = {}
 
-        print("Estados lidos:", estados)
-
         for linha in linhas[2:]:
             if linha.strip() == '---':
                 break
@@ -51,7 +49,6 @@ class MaquinaMoore:
             valor_entrada = transition[1].strip()
 
             transicoes[estado][valor_entrada] = prox_estado
-            print(f"Adicionando transição: {estado} -> {prox_estado} com símbolo '{valor_entrada}'")
 
         # Lendo as saídas associadas a cada estado
         for linha in linhas[len(estados)+3:]:

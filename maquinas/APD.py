@@ -12,14 +12,11 @@ class APD:
     def transitar(self, simbolo):
         if simbolo in self.transicoes[self.estado_atual]:
             prox_estado, desempilha, empilha = self.transicoes[self.estado_atual][simbolo]
-            print(f'Próximo estado: {prox_estado}, Desempilha: {desempilha}, Empilha: {empilha}')
-            print(f'Pilha antes da transição: {self.pilha}')
 
             if desempilha != '&':
                 if self.pilha and self.pilha[-1] == desempilha:
                     self.pilha.pop()
                 else:
-                    print(f"Erro: Tentativa de desempilhar '{desempilha}', mas o topo da pilha é '{self.pilha[-1] if self.pilha else None}'")
                     self.estado_atual = 'erro'
                     return self.estado_atual
 
@@ -28,11 +25,22 @@ class APD:
 
             self.estado_atual = prox_estado
         else:
-            print(f"Erro: Transição não encontrada para símbolo '{simbolo}' no estado '{self.estado_atual}'")
+            print(f"Erro: Transição não encontrada")
             self.estado_atual = 'erro'
 
-        print(f'Estado atual após a transição: {self.estado_atual}')
-        print(f'Pilha depois da transição: {self.pilha}')
+        if 'v' in self.pilha:
+            print('A receita está vermelha demais!')
+            print(f'\033[0;31mEstado Atual: {self.estado_atual}')
+            print(f'Pilha: {self.pilha} \033[0m')
+        elif 'z' in self.pilha:
+            print('A receita está azul demais!')
+            print(f'\033[0;34mEstado Atual: {self.estado_atual}')
+            print(f'Pilha: {self.pilha} \033[0m')
+        elif 'g' in self.pilha:
+            print('A receita está azul demais!')
+            print(f'\033[0;37mEstado Atual: {self.estado_atual}')
+            print(f'Pilha: {self.pilha} \033[0m')
+
         return self.estado_atual
 
     def get_estado_atual(self):
