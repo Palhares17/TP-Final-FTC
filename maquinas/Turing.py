@@ -26,8 +26,6 @@ class MaquinaTuring:
 
             novo_simbolo, movimentacao_cabecote, prox_estado = transicao
 
-            print(f'{self.estado_atual} {self.fita} {novo_simbolo} {movimentacao_cabecote} {prox_estado}')
-
             self.fita[posicao_cabecote] = novo_simbolo
             self.estado_atual = prox_estado
 

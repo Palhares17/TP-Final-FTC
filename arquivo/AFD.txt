@@ -1,9 +1,9 @@
-Q: I ing1 ing2 erro F
+Q: I q1 q2 q3 q4 q5 F
 I: I
 F: F
-I -> ing1 		| a
-ing1 -> ing2 	| p
-ing1 -> erro 	| o
-ing2 -> F 		| p
-ing2 -> erro 	| o
-F -> erro 		| o
+I  -> q1 	| da
+q1 -> q2 	| dl
+q2 -> q3 	| dl
+q3 -> q4 	| dl
+q4 -> q5 	| dl
+q5 -> F   | el
