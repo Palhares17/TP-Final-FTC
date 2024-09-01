@@ -21,26 +21,27 @@ class APD:
                     return self.estado_atual
 
             if empilha != '&':
-                self.pilha.append(empilha)
+                for char in empilha:
+                    self.pilha.append(char)
 
             self.estado_atual = prox_estado
         else:
             print(f"Erro: Transição não encontrada")
             self.estado_atual = 'erro'
 
-        if 'v' in self.pilha:
+        if 'r' in self.pilha:
             print('A receita está vermelha demais!')
             print(f'\033[0;31mEstado Atual: {self.estado_atual}')
             print(f'Pilha: {self.pilha} \033[0m')
-        elif 'z' in self.pilha:
+        if 'b' in self.pilha:
             print('A receita está azul demais!')
             print(f'\033[0;34mEstado Atual: {self.estado_atual}')
             print(f'Pilha: {self.pilha} \033[0m')
-        elif 'g' in self.pilha:
-            print('A receita está azul demais!')
-            print(f'\033[0;37mEstado Atual: {self.estado_atual}')
+        if 'g' in self.pilha:
+            print('A receita está verde demais!')
+            print(f'\033[0;32mEstado Atual: {self.estado_atual}')
             print(f'Pilha: {self.pilha} \033[0m')
-
+            
         return self.estado_atual
 
     def get_estado_atual(self):
