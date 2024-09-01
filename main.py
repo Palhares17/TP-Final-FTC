@@ -138,7 +138,7 @@ def menu():
                 break
             simbolo = input('Adicione o ingrediente: ')
             saida = maquina.transitar(simbolo)
-            print(f'Estado Atual: {maquina.getEstadoAtual()} | saída: {saida}' + '\n' * 4)
+            print(f'Estado Atual: {maquina.getEstadoAtual()} | saída: {saida}' + '\n' * 2)
         
 
         
@@ -150,7 +150,7 @@ def menu():
         print("### Receita para ser criada\n")
         print("\nSangue Preto\n")
         print("Buffs: O sangue do Bruxo causa 15% do dano causado por vampiros e necrófagos por 30 segundos.\n")
-        print("\t1x Destilado Anão\n\t2x Cogumelos de Esgoto\n\t4x Sangue de Carniçal\n")
+        print("\t1x Destilado Anão\n\t2x Cogumelos de Esgoto\n\t2x Sangue de Carniçal\n")
 
         resposta = 's'
         while resposta != 'n':
@@ -159,7 +159,7 @@ def menu():
                 break
             simbolo = input('Adicione o ingrediente: ')
             saida = maquina.transitar(simbolo)
-            print(f'Estado Atual: {maquina.getEstadoAtual()} | saída: {saida}' + '\n' * 4)
+            print(f'Estado Atual: {maquina.getEstadoAtual()} | saída: {saida}' + '\n' * 2)
         
 
 
@@ -179,7 +179,7 @@ def menu():
             maquina.adicionar_simbolo(simbolo)
         
         maquina.transitar()
-        print(f'\n\nResultado da fita: {maquina.getFita()}' + '\n' * 4)
+        print(f'\n\nResultado da fita: {maquina.getFita()}' + '\n' * 2)
 
             
     elif opcao == "0":
