@@ -1,9 +1,8 @@
 Q: I q1 q2 q3 F
-S: a b
+S: da ac et
 I: I
 F: F
-I  -> q1 | ac | & | rr
-q1 -> q1 | co | r | r
-q1 -> q2 | da | r | g
-q2 -> q3 | dl | g | b
-q3 -> F  | el | b | &
+I  -> q1 | da | & | rr
+q1 -> q2 | ac | r | b
+q2 -> q3 | ac | b | &
+q3 -> F  | et | r | &

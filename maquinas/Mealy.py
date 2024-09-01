@@ -56,7 +56,3 @@ class MaquinaMealy:
                 print(f"Erro: Estado '{estado}' não encontrado entre os estados lidos.")
 
         return MaquinaMealy(estados, 'I', transicoes, {})
-
-# Exemplo de uso:
-maquina = MaquinaMealy.leituraArq('arquivo/Mealy.txt')
-

@@ -61,8 +61,4 @@ class MaquinaMoore:
             saidas[estado] = saida
 
         return MaquinaMoore(estados, 'I', transicoes, saidas)
-    
-# Exemplo de uso:
-maquina = MaquinaMoore.leituraArq('arquivo/Moore.txt')
-
 

@@ -64,6 +64,10 @@ class APD:
                 break
 
             parte = linha.strip().split('->')
+            if len(parte) != 2:
+                print(f"Erro ao processar a linha: {linha}")
+                continue  # Pula a linha com erro
+            
             estado = parte[0].strip()
             transicoes_bruta = parte[1].strip().split('|')
 
@@ -75,8 +79,4 @@ class APD:
             transicoes[estado][valor_entrada] = (prox_estado, desempilha, empilha)
 
         return APD(estados, estado_inicial, estado_final, transicoes)
-
-# Exemplo de uso do APD
-maquina = APD.leituraArq('arquivo/APD.txt')
-
 

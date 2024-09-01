@@ -78,6 +78,3 @@ class MaquinaTuring:
 
         return MaquinaTuring(estados, estados[0], transicoes)
 
-# Exemplo de uso
-maquina = MaquinaTuring.leituraArq('arquivo/Turing.txt')
-

@@ -53,6 +53,3 @@ class AFD:
             transicoes[estado][valor_entrada] = prox_estado
 
         return AFD(estados, 'I', transicoes)
-
-
-maquina = AFD.leituraArq('arquivo/AFD.txt')
