@@ -19,7 +19,11 @@ class AFD:
     def transitar(self, simbolo):
         if simbolo in self.transicoes[self.estado_atual]:
             self.estado_atual = self.transicoes[self.estado_atual][simbolo]
-            print('Transição bem-sucedida:', self.estado_atual)
+            if self.estado_atual == 'erro':
+                print('Transição mal-sucedida: estado de erro alcançado.')
+            else:
+                print('Transição bem-sucedida:', self.estado_atual)
+            #print('Transição bem-sucedida:', self.estado_atual)
         else:
             self.estado_atual = 'erro'
         

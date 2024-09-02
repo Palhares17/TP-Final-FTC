@@ -24,10 +24,8 @@ ___  ____ ___ _ ____ _  _    ____ ____ ____ ____ ___ ____ ____
 ingredientes = {
     "ac": "Acônito",
     "ce": "Cogumelos de Esgoto",
-    "co": "Cortinarius",
     "dl": "Dente de Leão",
     "da": "Destilado de Anão",
-    "ee": "Embrião de Endriúga",
     "et": "Essência das Trevas",
     "el": "Essência de luz",
     "sc": "Sangue de Carniçal",
@@ -42,7 +40,7 @@ def menu():
     print("3. Máquina de Moore")
     print("4. Máquina de Mealy")
     print("5. Máquina MT")
-    print("0. Sair")
+    #print("0. Sair")
 
     opcao = input("Digite a opção desejada: ")
 
@@ -63,20 +61,24 @@ def menu():
         print("\n")
 
         resposta = 's'
+        resultado = '\033[1m' + '\nErro na poção. Sequencia nao condiz com a receita!\033[0m' + '\n' * 4
         while (resposta != 'n'):
             resposta = input('Deseja adicionar um ingrediente? (s/n): ')
             if resposta == 'n':
+                print(resultado)
                 break
-            simbolo = input('Adicione o ingrediente: ')
+            simbolo = input('\nAdicione o ingrediente: ')
 
             estado_atual = maquina.transitar(simbolo)
 
             if estado_atual == 'erro':
-                print('Erro na transição!')
-                break
+                resultado = '\033[1m' + '\nErro na poção. Sequencia nao condiz com a receita!\033[0m' + '\n' * 4
+                #print('Erro na transição!')
+                #break
             elif estado_atual == 'F':
+                resultado = '\033[1m' + '\nReceita de PAPAFIGO criada!\033[0m' + '\n' * 4
                 print('\033[1m' + '\nReceita de PAPAFIGO criada!\033[0m' + '\n' * 4)
-                break
+                #break
         
 
 
@@ -97,20 +99,24 @@ def menu():
         print("\n")
 
         resposta = 's'
+        resultado = '\033[1m' + '\nErro na poção. Sequencia nao condiz com a receita!\033[0m' + '\n' * 4
         while resposta != 'n':
             resposta = input('Deseja adicionar um ingrediente? (s/n): ')
             if resposta == 'n':
+                print(resultado)
                 break
             simbolo = input('Adicione o ingrediente: ')
 
             estado_atual = maquina.transitar(simbolo)
 
             if estado_atual == 'erro':
-                print('Erro na transição!')
-                break
+                resultado = '\033[1m' + '\nErro na poção. Sequencia nao condiz com a receita!\033[0m' + '\n' * 4
+                #print('Erro na transição!')
+                #break
             elif estado_atual == 'F':
-                print('\033[1m' + '\nReceita de lUA CHEIA criada!\033[0m' + '\n' * 4)
-                break
+                resultado = '\033[1m' + '\nReceita de LUA CHEIA criada!\033[0m' + '\n' * 4
+                print('\033[1m' + '\nReceita de LUA CHEIA criada!\033[0m' + '\n' * 4)
+                #break
         
         
     
@@ -122,7 +128,7 @@ def menu():
         print("### Receita para ser criada\n")
         print("\nCoruja do Mato\n")
         print("Buffs: Acelera recuperação de Estamina. 5% de regeneração de estamina em combate por 30 segundos.\n")
-        print("\t1x Destilado Anão\n\t2x Verbena\n\t1x Veneno de Aracnas\n")
+        print("\t1x Destilado Anão\n\t2x Verbena\n\t2x Veneno de Aracnas\n")
 
         print("Ingredientes disponíveis:\n")
         for codigo, nome in ingredientes.items():
@@ -182,8 +188,8 @@ def menu():
         print(f'\n\nResultado da fita: {maquina.getFita()}' + '\n' * 2)
 
             
-    elif opcao == "0":
-        print("Programa encerrado." + '\n' * 4)
+    #elif opcao == "0":
+        #print("Programa encerrado." + '\n' * 4)
     else:
         print("\033[1m" + "Opção inválida. Por favor, escolha uma opção válida.\033[0m" + '\n' * 4)    
     

@@ -1,26 +1,29 @@
 class MaquinaMealy:
     def __init__(self, estados, estado_inicial, transicoes, saidas):
-        self.estados = estados
-        self.estado_inicial = estado_inicial
-        self.transicoes = transicoes
-        self.saidas = saidas
-        self.estado_atual = estado_inicial
-
+        self.estados = estados #armazena os estados possiveis da maquina
+        self.estado_inicial = estado_inicial #define estado inicial 
+        self.transicoes = transicoes #guarda as transições entre os estado
+        self.saidas = saidas #contem as saidas associadas a cada transicao
+        self.estado_atual = estado_inicial #define o estado atual da maquina
+    #função que realiza as transições
     def transitar(self, simbolo):
+
+        #verifica se o símbolo está nas transições possíveis a partir do estado atual
         if simbolo in self.transicoes[self.estado_atual]:
             prox_estado, saida = self.transicoes[self.estado_atual][simbolo]
             self.estado_atual = prox_estado
             print('Transição bem-sucedida:', (prox_estado, saida))
             return saida
         else:
+            #se o simbolo nao estiver nas transicoes possiveis do estado atual, define como erro
             self.estado_atual = 'erro'
             return 'Ingrediente inválido! A receita foi arruinada.'
 
     def getEstadoAtual(self):
-        return self.estado_atual
+        return self.estado_atual #retorna o estado atual da maquina
 
     @staticmethod
-    def leituraArq(file_path):
+    def leituraArq(file_path): #funcao de leitura
         with open(file_path, 'r') as file:
             linhas = file.readlines()
 

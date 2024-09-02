@@ -1,9 +1,15 @@
-Q: I q1 q2 q3 q4 q5 F
+Q: I q1 q2 q3 q4 q5 erro F
 I: I
 F: F
 I  -> q1 	| da
+q1 -> erro 	| ve
 q1 -> q2 	| dl
+q2 -> erro 	| ve
 q2 -> q3 	| dl
+q3 -> erro 	| ve
 q3 -> q4 	| dl
+q4 -> erro 	| ve
 q4 -> q5 	| dl
+q5 -> erro 	| ve
 q5 -> F   | el
+F -> erro 	| ve
