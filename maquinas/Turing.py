@@ -1,10 +1,16 @@
 class MaquinaTuring:
     def __init__(self, estados, estado_inicial, transicoes):
-        self.estados = estados
+        
+        self.estados = estados 
+        #atribui a lista de estados fornecida ao atributo "estados" da instancia
         self.estado_atual = estado_inicial
+        #define o estado inicial da maquina como o estado atual
         self.estado_inicial = estado_inicial
+        #armazena o estado inicial
         self.transicoes = transicoes
+        #atribui o dicionario de transicoes ao atributo 'transicoes' da instancia
         self.fita = []
+        #inicializa a fita como uma lista vazia
 
     def adicionar_simbolo(self, simbolo):
         self.fita.append(simbolo)
@@ -57,7 +63,7 @@ class MaquinaTuring:
         for estado in estados:
             transicoes[estado] = {}
 
-        # Ler as transições
+        #ler as transições
         for linha in linhas[1:]:
             if '->' not in linha:
                 continue

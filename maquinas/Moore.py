@@ -5,7 +5,7 @@ class MaquinaMoore:
         self.transicoes = transicoes #guarda as transições entre os estados
         self.saidas = saidas #contem as saidas relacionadas com cada estado
         self.estado_atual = estado_inicial #define o estado atual da machine
-    #função p/ transitar
+    
     def transitar(self, simbolo):
         #verificacao se simbolo esta nas transicoes a partir do estado atual
         if simbolo in self.transicoes[self.estado_atual]:
@@ -31,7 +31,7 @@ class MaquinaMoore:
         transicoes = {}
         saidas = {}
 
-        #dicionário de trans. e saídas p/ cada estado
+        #dicionário de transic. e saídas p/ cada estado
         for estado in estados:
             transicoes[estado] = {}
 

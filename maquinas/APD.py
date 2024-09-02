@@ -3,11 +3,21 @@ from collections import defaultdict
 class APD:
     def __init__(self, estados, estado_inicial, estado_final, transicoes):
         self.estados = estados
+        #atribui a lista de estados fornecida ao atributo 'estados' da instância
+
         self.estado_inicial = estado_inicial
+        #armazena o estado inicial no atributo 'estado_inicial'
+
         self.estado_final = estado_final
+        #armazena o estado final no atributo 'estado_final'
+
         self.transicoes = transicoes
+        #atribui o dicionário de transições ao atributo 'transicoes' da instância
+
         self.estado_atual = estado_inicial
+
         self.pilha = []
+        #inicializa a pilha como uma lista vazia
 
     def transitar(self, simbolo):
         if simbolo in self.transicoes[self.estado_atual]:

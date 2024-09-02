@@ -1,11 +1,20 @@
 class MaquinaMealy:
     def __init__(self, estados, estado_inicial, transicoes, saidas):
-        self.estados = estados #armazena os estados possiveis da maquina
-        self.estado_inicial = estado_inicial #define estado inicial 
-        self.transicoes = transicoes #guarda as transições entre os estado
-        self.saidas = saidas #contem as saidas associadas a cada transicao
-        self.estado_atual = estado_inicial #define o estado atual da maquina
-    #função que realiza as transições
+        self.estados = estados 
+        #armazena os estados possiveis da maquina
+
+        self.estado_inicial = estado_inicial 
+        #define estado inicial 
+
+        self.transicoes = transicoes 
+        #guarda as transições entre os estado
+
+        self.saidas = saidas 
+        #contem as saidas associadas a cada transicao
+
+        self.estado_atual = estado_inicial 
+        #define o estado atual da maquina
+    
     def transitar(self, simbolo):
 
         #verifica se o símbolo está nas transições possíveis a partir do estado atual
@@ -20,17 +29,17 @@ class MaquinaMealy:
             return 'Ingrediente inválido! A receita foi arruinada.'
 
     def getEstadoAtual(self):
-        return self.estado_atual #retorna o estado atual da maquina
+        return self.estado_atual
 
     @staticmethod
-    def leituraArq(file_path): #funcao de leitura
+    def leituraArq(file_path):
         with open(file_path, 'r') as file:
             linhas = file.readlines()
 
         estados = linhas[0].strip().split(' ')[1:]
         transicoes = {}
 
-        # Inicializando o dicionário de transições para cada estado
+        #inicializando o dicionário de transições para cada estado
         for estado in estados:
             transicoes[estado] = {}
 
@@ -52,7 +61,7 @@ class MaquinaMealy:
             valor_entrada = transition[1].strip()
             saida = transition[2].strip()
 
-            # Verificando se o estado existe nos estados lidos
+            #verificando se o estado existe nos estados lidos
             if estado in transicoes:
                 transicoes[estado][valor_entrada] = (prox_estado, saida)
             else:

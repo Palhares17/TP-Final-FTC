@@ -2,27 +2,44 @@ from collections import defaultdict
 
 class AFD:
     def __init__(self, estados, estado_inicial, transicoes):
-        self.estados = estados
+        self.estados = estados 
+        # atribui a lista de estados fornecida ao atributo 'estados' da instância
+
         self.estado_inicial = estado_inicial
+        #armazena o estado inicial no atributo 'estado_inicial'
+
         self.transicoes = transicoes
+        #atribui o dicionário de transições ao atributo 'transicoes' da instância
+
         self.estado_atual = estado_inicial
+        #define o estado inicial da máquina como o estado atual
+
         self.estados_finais = None
+        #inicializa o atributo 'estados_finais' como None
 
     def initialize(self, estados, alfabeto, transicoes, estado_inicial, estados_finais):
+
         self.estados = estados
+        #atribui a lista de estados fornecida ao atributo 'estados' da instância
+
         self.alfabeto = alfabeto
+
         self.transicoes = transicoes
+        #atribui o dicionário de transições ao atributo 'transicoes' da instância
+
         self.estado_inicial = estado_inicial
         self.estados_finais = estados_finais
+
         self.estado_atual = estado_inicial
+        #define o estado inicial da máquina como o estado atual
 
     def transitar(self, simbolo):
         if simbolo in self.transicoes[self.estado_atual]:
             self.estado_atual = self.transicoes[self.estado_atual][simbolo]
             if self.estado_atual == 'erro':
-                print('Transição mal-sucedida: estado de erro alcançado.')
+                print('\n\nTransição mal-sucedida: estado de erro alcançado.\n\n')
             else:
-                print('Transição bem-sucedida:', self.estado_atual)
+                print('\n\nTransição bem-sucedida:', self.estado_atual)
             #print('Transição bem-sucedida:', self.estado_atual)
         else:
             self.estado_atual = 'erro'
