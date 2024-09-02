@@ -40,7 +40,7 @@ def menu():
     print("3. Máquina de Moore")
     print("4. Máquina de Mealy")
     print("5. Máquina MT")
-    #print("0. Sair")
+
 
     opcao = input("Digite a opção desejada: ")
 
@@ -73,12 +73,11 @@ def menu():
 
             if estado_atual == 'erro':
                 resultado = '\033[1m' + '\nErro na poção. Sequencia nao condiz com a receita!\033[0m' + '\n' * 4
-                #print('Erro na transição!')
-                #break
+
             elif estado_atual == 'F':
                 resultado = '\033[1m' + '\nReceita de PAPAFIGO criada!\033[0m' + '\n' * 4
                 print('\033[1m' + '\nReceita de PAPAFIGO criada!\033[0m' + '\n' * 4)
-                #break
+
         
 
 
@@ -111,12 +110,11 @@ def menu():
 
             if estado_atual == 'erro':
                 resultado = '\033[1m' + '\nErro na poção. Sequencia nao condiz com a receita!\033[0m' + '\n' * 4
-                #print('Erro na transição!')
-                #break
+
             elif estado_atual == 'F':
                 resultado = '\033[1m' + '\nReceita de LUA CHEIA criada!\033[0m' + '\n' * 4
                 print('\033[1m' + '\nReceita de LUA CHEIA criada!\033[0m' + '\n' * 4)
-                #break
+
         
         
     
@@ -188,8 +186,6 @@ def menu():
         print(f'\n\nResultado da fita: {maquina.getFita()}' + '\n' * 2)
 
             
-    #elif opcao == "0":
-        #print("Programa encerrado." + '\n' * 4)
     else:
         print("\033[1m" + "Opção inválida. Por favor, escolha uma opção válida.\033[0m" + '\n' * 4)    
     

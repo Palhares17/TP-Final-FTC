@@ -1,8 +1,12 @@
-Q: I q1 q2 q3 F
-S: da ac et
+Q: I q1 q2 q3 erro F
+S: da ac et ve
 I: I
 F: F
 I  -> q1 | da | & | rr
+q1  -> erro | ve| & | &
 q1 -> q2 | ac | r | b
+q2  -> erro | ve | & | &
 q2 -> q3 | ac | b | &
+q3  -> erro | ve | & | &
 q3 -> F  | et | r | &
+F  -> erro | ve | & | &
